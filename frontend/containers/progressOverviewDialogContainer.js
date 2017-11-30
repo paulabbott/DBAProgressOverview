@@ -18,6 +18,7 @@ var ProgressOverviewDialogContainer = React.createClass({
     },
 
     fetchData: function() {
+        //this is calling a action that already exsists to fetch the users achivment model
         this.props.fetchUserAchievements()
         .then((response) => {
             this.setState({
@@ -25,9 +26,12 @@ var ProgressOverviewDialogContainer = React.createClass({
                 isSyncing: false
             }, function() {
                 this.setState({
+                    //set animation true here
                     _hasAnimatedPoints: true
                 }, function() {
                     this.setState({
+                        //and here, not sure we still need to chain these?
+                        //also is this really a good discription of whats happening?
                         _hasAnimatedStars: true
                     })
                 })
@@ -42,6 +46,7 @@ var ProgressOverviewDialogContainer = React.createClass({
 
     render: function() {
         return (
+            //spread props and pass to the compenent, I don't understand what this equates too.
             <ProgressOverviewDialog
                 {...this.props}
                 {...this.state}
@@ -50,6 +55,7 @@ var ProgressOverviewDialogContainer = React.createClass({
     }
 })
 
+//HOC takes all out components and iterates threw them, again can't quite say exsactly what is happening here
 export default connect(function(state, props) {
     return {
         achievements: state.achievements,

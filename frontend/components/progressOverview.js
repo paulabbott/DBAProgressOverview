@@ -3,7 +3,6 @@ import ProgressOverviewCounter from './progressOverviewCounter';
 
 var ProgressOverview = React.createClass({
     render: function() {
-        console.log(this.props.totalPoints);
         return (
             <div className="progress-overview">
                 <ProgressOverviewCounter
